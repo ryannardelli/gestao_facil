@@ -9,16 +9,7 @@
       <i class="bi bi-plus-lg"></i> Cadastrar Novo Produto
     </a>
 
-    <div class="container" th:styleappend="${param.message != null ? '' : 'display: none;'}">
-      <div th:classappend="${param.success != null && param.success.toString() == 'true' ? 'alert-success' : 'alert-danger'}"
-           class="alert alert-dismissible fade show d-flex align-items-center"
-           role="alert">
-        <i class="bi me-2" th:classappend="${param.success != null && param.success.toString() ==  'true' ? 'bi-check-circle-fill' : 'bi-exclamation-triangle-fill'}"></i>
-        <strong th:text="${param.message}"></strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
-      </div>
-    </div>
-
+    <div  th:replace="~{products/fragments_products :: alert}"></div>
 
     <nav th:replace="~{fragments :: header}"></nav>
 

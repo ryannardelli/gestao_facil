@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+
 
 @Controller
 @RequestMapping("/products")
@@ -37,7 +42,7 @@ public class ProductController {
     @GetMapping("/new")
     public ModelAndView newProduct() {
         ModelAndView mv = new ModelAndView("products/new");
-        mv.addObject("requestNewProduct", new RequestNewProduct()); // Adiciona o objeto esperado pelo formulário
+        mv.addObject("requestNewProduct", new RequestNewProduct());
         mv.addObject("statusProduct", StatusProduct.values());
         return mv;
     }
@@ -73,15 +78,20 @@ public class ProductController {
     }
 
     @PostMapping("")
-    public ModelAndView create(@Valid RequestNewProduct requestNewProduct, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()) {
+    public ModelAndView create(@Valid RequestNewProduct requestNewProduct, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
             ModelAndView mv = new ModelAndView("products/new");
             mv.addObject("statusProduct", StatusProduct.values());
             return mv;
         } else {
             Product product = requestNewProduct.toProduct();
             this.productRepository.save(product);
-            return new ModelAndView("redirect:/products/" +product.getId());
+
+            ModelAndView modelAndView = new ModelAndView("redirect:/products/" + product.getId());
+            modelAndView.addObject("message", "Seu produto foi criado com sucesso!");
+            modelAndView.addObject("success", true);
+
+            return modelAndView;
         }
     }
 
@@ -96,7 +106,10 @@ public class ProductController {
             if(optional.isPresent()) {
                 Product product = requestNewProduct.toProduct(optional.get());
                 this.productRepository.save(product);
-                return new ModelAndView("redirect:/products/" +product.getId());
+                ModelAndView modelAndView = new ModelAndView("redirect:/products/" +product.getId());
+                modelAndView.addObject("message", "Seu produto foi editado com sucesso!");
+                modelAndView.addObject("success", true);
+                return modelAndView;
             } else {
                 return new ModelAndView("redirect:/products");
             }
@@ -118,15 +131,4 @@ public class ProductController {
 
         return mv;
     }
-
-    // @GetMapping("/{id}/delete")
-    // public String delete(@PathVariable long id) {
-        // try {
-           // this.productRepository.deleteById(id);
-            //return "redirect:/products";
-        //} catch (EmptyResultDataAccessException e) {
-           // System.out.println(e);
-          //  return "redirect:/products";
-        //}
-    //}
 }
