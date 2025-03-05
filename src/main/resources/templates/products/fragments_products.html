@@ -1,0 +1,59 @@
+<form th:object="${requestNewProduct}" th:action="${action}" method="POST" th:fragment="form(requestNewProduct, action, buttonLabel, href)">
+    <div class="mb-3">
+        <label for="name" class="form-label">Nome do Produto</label>
+        <input type="text" th:errorclass="is-invalid" class="form-control" id="name" th:field="*{name}">
+        <div class="invalid-feedback" th:errors="*{name}"></div>
+    </div>
+
+    <div class="mb-3">
+        <label for="category" class="form-label">Categoria</label>
+        <select class="form-select" th:errorclass="is-invalid" id="category" th:field="*{category}">
+            <option value="">Selecione a Categoria</option>
+            <option value="Eletrônicos">Eletrônicos</option>
+            <option value="Roupas">Roupas</option>
+            <option value="Alimentos">Alimentos</option>
+            <option value="Móveis">Móveis</option>
+            <option value="Brinquedos">Brinquedos</option>
+            <option value="Esportes">Esportes</option>
+            <option value="Beleza e Saúde">Beleza e Saúde</option>
+            <option value="Automotivo">Automotivo</option>
+            <option value="Papelaria">Papelaria</option>
+            <option value="Casa e Decoração">Casa e Decoração</option>
+            <option value="Ferramentas">Ferramentas</option>
+            <option value="Pet Shop">Pet Shop</option>
+            <option value="Livros">Livros</option>
+        </select>
+        <div class="invalid-feedback" th:errors="*{category}"></div>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="cod" class="form-label">Código do Produto</label>
+        <input type="text" class="form-control" th:errorclass="is-invalid" id="cod" th:field="*{cod}">
+        <div class="invalid-feedback" th:errors="*{cod}"></div>
+    </div>
+
+    <div class="mb-3">
+        <label for="price" class="form-label">Preço</label>
+        <input type="number" class="form-control" th:errorclass="is-invalid" id="price" th:field="*{price}" step="0.01">
+        <div  class="invalid-feedback" th:errors="*{price}"></div>
+    </div>
+
+    <div class="mb-3">
+        <label for="quantity" class="form-label">Quantidade</label>
+        <input type="number" class="form-control" th:errorclass="is-invalid" id="quantity" th:field="*{quantity}">
+        <div class="invalid-feedback" th:errors="*{quantity}"></div>
+    </div>
+
+    <div class="mb-3">
+        <label for="statusProduct" class="form-label">Status do Produto</label>
+        <select class="form-select" id="statusProduct" th:field="*{statusProduct}">
+            <option th:each="status : ${statusProduct}" th:value="${status}" th:text="${status}">
+            </option>
+        </select>
+    </div>
+    <div class="d-flex gap-2 mb-4">
+        <button type="submit" class="btn btn-primary" th:text="${buttonLabel}">Texto do botão</button>
+        <a th:href="${href}" class="btn btn-secondary">Voltar</a>
+    </div>
+</form>
