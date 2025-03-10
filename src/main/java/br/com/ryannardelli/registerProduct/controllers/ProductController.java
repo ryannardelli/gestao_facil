@@ -20,8 +20,6 @@ import java.util.Optional;
 
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
-
 @Controller
 @RequestMapping("/products")
 public class ProductController {
