@@ -5,9 +5,8 @@
   <body>
   <h1 class="text-center p-4">Lista de Produtos</h1>
   <div class="container mt-4">
-    <a href="/products/new" class="btn btn-primary mb-4">
-      <i class="bi bi-plus-lg"></i> Cadastrar Novo Produto
-    </a>
+
+    <a th:replace="~{products/fragments_products :: register('/products/new', 'Produto')}"></a>
 
     <div  th:replace="~{products/fragments_products :: alert}"></div>
 

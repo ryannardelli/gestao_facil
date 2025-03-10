@@ -32,7 +32,7 @@ public class ProductController {
     public ModelAndView index(HttpServletRequest request) {
         List<Product> products = this.productRepository.findAll();
 
-        ModelAndView mv = new ModelAndView("products/index");
+        ModelAndView mv = new ModelAndView("products/product");
         mv.addObject("products", products);
         mv.addObject("currentPath", request.getServletPath());
         return mv;
