@@ -31,7 +31,6 @@ public class RequestNewProduct {
     private String phone;
     private String address;
 
-    // Construtor padrão necessário para frameworks como Spring
     public RequestNewProduct() {
     }
 
