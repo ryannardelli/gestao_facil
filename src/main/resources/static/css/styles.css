@@ -1,0 +1,39 @@
+@media(max-width: 576px) {
+    .table {
+        width: 100%;
+        table-layout: auto;
+    }
+    th:last-child, td:last-child {
+        min-width: 150px;
+        text-align: center;
+    }
+    .table td, .table th {
+        white-space: nowrap;
+    }
+    .btn-sm {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.8rem;
+    }
+}
+
+.table th, .table td {
+    padding: 12px;
+    min-width: 120px;
+}
+
+th:nth-child(1), td:nth-child(1) { /* ID */
+    width: 80px;
+}
+
+th:nth-child(2), td:nth-child(2) { /* Nome */
+    min-width: 200px;
+}
+
+th:nth-child(3), td:nth-child(3) { /* Endereço */
+    min-width: 250px;
+}
+
+th:last-child, td:last-child { /* Ações */
+    min-width: 180px;
+    text-align: center;
+}

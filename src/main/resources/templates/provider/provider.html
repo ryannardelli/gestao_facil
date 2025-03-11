@@ -1,16 +1,16 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments :: head('Lista de Fornecedores')}"></head>
+<link rel="stylesheet" href="/css/styles.css">
 <body>
 
 <h1 class="text-center p-4">Lista de Fornecedores</h1>
-<div class="container mt-4">
+<div class="container-fluid mt-4">
     <a th:replace="~{products/fragments_products :: register('/provider/new', 'Fornecedor')}"></a>
 
     <div  th:replace="~{products/fragments_products :: alert}"></div>
 
     <nav th:replace="~{fragments :: header}"></nav>
-
 
     <table class="table table-striped table-hover">
         <thead>
