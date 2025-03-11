@@ -1,17 +1,34 @@
 package br.com.ryannardelli.registerProduct.controllers;
 
+import br.com.ryannardelli.registerProduct.Models.Product;
+import br.com.ryannardelli.registerProduct.Models.Provider;
+import br.com.ryannardelli.registerProduct.dto.RequestNewProvider;
+import br.com.ryannardelli.registerProduct.repositories.ProviderRepository;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/provider")
 public class ProviderController {
+    @Autowired
+    private ProviderRepository providerRepository;
+
     @GetMapping("")
     public ModelAndView home(HttpServletRequest request) {
+        List<Provider> providers = this.providerRepository.findAll();
+
         ModelAndView mv = new ModelAndView("provider/provider");
+        mv.addObject("providers", providers);
         mv.addObject("currentPath", request.getServletPath());
         return mv;
     }
@@ -19,6 +36,24 @@ public class ProviderController {
     @GetMapping("/new")
     public ModelAndView newProvider() {
         ModelAndView mv = new ModelAndView("provider/new");
+        mv.addObject("requestNewProvider", new RequestNewProvider());
         return mv;
+    }
+
+    @PostMapping("")
+    public ModelAndView create(@Valid RequestNewProvider requestNewProvider, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            ModelAndView mv = new ModelAndView("provider/new");
+            return mv;
+        } else {
+            Provider provider = requestNewProvider.toProvider();
+            this.providerRepository.save(provider);
+
+            ModelAndView modelAndView = new ModelAndView("redirect:/provider");
+            modelAndView.addObject("message", "Seu Fornecedor foi criado com sucesso!");
+            modelAndView.addObject("success", true);
+
+            return modelAndView;
+        }
     }
 }

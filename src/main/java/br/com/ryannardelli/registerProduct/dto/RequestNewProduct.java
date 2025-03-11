@@ -1,7 +1,6 @@
 package br.com.ryannardelli.registerProduct.dto;
 
 import br.com.ryannardelli.registerProduct.Models.Product;
-import br.com.ryannardelli.registerProduct.Models.Provider;
 import br.com.ryannardelli.registerProduct.Models.StatusProduct;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
@@ -25,54 +24,7 @@ public class RequestNewProduct {
     @NotNull(message = "Por favor, selecione uma categoria.")
     private StatusProduct statusProduct;
 
-    private String nameProvider;
-    private String cnpj;
-    private String email;
-    private String phone;
-    private String address;
-
-    public RequestNewProduct() {
-    }
-
-    public String getNameProvider() {
-        return nameProvider;
-    }
-
-    public void setNameProvider(String nameProvider) {
-        this.nameProvider = nameProvider;
-    }
-
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
+    public RequestNewProduct() {}
 
     public String getName() {
         return name;
@@ -151,17 +103,6 @@ public class RequestNewProduct {
         this.quantity = product.getQuantity();
         this.cod = product.getCod();
         this.statusProduct = product.getStatusProduct();
-    }
-
-    public Provider toProvider() {
-        Provider provider = new Provider();
-        provider.setNameProvider(nameProvider);
-        provider.setCnpj(cnpj);
-        provider.setEmail(email);
-        provider.setAddress(address);
-        provider.setPhone(phone);
-
-        return provider;
     }
 
     @Override

@@ -22,17 +22,13 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="product : ${products}">
-            <td th:text="${product.getId()}">ID PRODUCT</td>
-            <td th:text="${product.name}">Name Product</td>
-            <td th:text="${product.price}">Price Product</td>
-            <td th:text="${product.quantity}">Quantity Product</td>
-            <td th:text="${product.category}"></td>
-            <td th:text="${product.cod}">Code Product</td>
-            <td th:text="${product.statusProduct}">Status Product</td>
-            <td th:text="${product.supplier.name}">Supplier Name</td>
-            <td th:text="${product.supplier.email}">Supplier Email</td>
-            <td th:text="${product.supplier.phone}">Supplier Phone</td>
+        <tr th:each="providers : ${providers}">
+            <td th:text="${providers.getId()}">ID PROVIDER</td>
+            <td th:text="${providers.name}">NAME PROVIDER</td>
+            <td th:text="${providers.address}">ADDRESS PROVIDER</td>
+            <td th:text="${providers.cnpj}">CNPJ PROVIDER</td>
+            <td th:text="${providers.email}">EMAIL</td>
+            <td th:text="${providers.phone}">PHONE PROVIDER</td>
             <td>
                 <button class="btn btn-success btn-sm"><i class="bi bi-eye"></i></button>
                 <button class="btn btn-warning btn-sm"><i class="bi bi-pencil"></i></button>
