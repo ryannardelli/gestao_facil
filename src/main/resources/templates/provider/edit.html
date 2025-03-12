@@ -1,10 +1,10 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments :: head('Editar Produto')}"></head>
+<head th:replace="~{fragments :: head('Editar Fornecedor')}"></head>
 <body>
 <div class="container mt-5">
-    <h2>Editar Produto</h2>
-    <form th:replace="~{products/fragments_products :: formProduct(requestNewProduct, '/products/' +${productId}, 'Editar', '/products/' +${productId})}">
+    <h2>Editar Fornecedor</h2>
+    <form th:replace="~{products/fragments_products :: formProvider(requestNewProvider, '/provider/' +${providerId}, 'Editar', '/provider/' +${providerId})}">
     </form>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

@@ -10,7 +10,7 @@ import jakarta.validation.constraints.Size;
 public class Provider {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @NotBlank(message = "O nome do fornecedor é obrigatório.")
     @Column(nullable = false)

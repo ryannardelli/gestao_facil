@@ -1,6 +1,8 @@
 package br.com.ryannardelli.registerProduct.controllers;
 
+import br.com.ryannardelli.registerProduct.Models.Product;
 import br.com.ryannardelli.registerProduct.Models.Provider;
+import br.com.ryannardelli.registerProduct.Models.StatusProduct;
 import br.com.ryannardelli.registerProduct.dto.RequestNewProvider;
 import br.com.ryannardelli.registerProduct.repositories.ProviderRepository;
 import jakarta.servlet.http.HttpServletRequest;
@@ -52,6 +54,42 @@ public class ProviderController {
             return mv;
         } else {
             return new ModelAndView("redirect:/provider");
+        }
+    }
+
+    @GetMapping("/{id}/edit")
+    public ModelAndView getProduct(@PathVariable long id, RequestNewProvider requestNewProvider) {
+        Optional <Provider> optional = this.providerRepository.findById(id);
+
+        if(optional.isPresent()) {
+            Provider provider = optional.get();
+            requestNewProvider.fromProvider(provider);
+            ModelAndView mv = new ModelAndView("provider/edit");
+            mv.addObject("statusProduct", StatusProduct.values());
+            mv.addObject("providerId", provider.getId());
+            return mv;
+        } else {
+            return new ModelAndView("redirect:/provider");
+        }
+    }
+
+    @PostMapping("/{id}")
+    public ModelAndView update(@PathVariable long id, @Valid RequestNewProvider requestNewProvider, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            ModelAndView mv = new ModelAndView("provider/edit");
+            return mv;
+        } else {
+            Optional <Provider> optional = this.providerRepository.findById(id);
+            if(optional.isPresent()) {
+                Provider provider = requestNewProvider.toProvider(optional.get());
+                this.providerRepository.save(provider);
+                ModelAndView modelAndView = new ModelAndView("redirect:/provider/" +provider.getId());
+                modelAndView.addObject("message", "Seu Fornecedor foi editado com sucesso!");
+                modelAndView.addObject("success", true);
+                return modelAndView;
+            } else {
+                return new ModelAndView("redirect:/provider");
+            }
         }
     }
 

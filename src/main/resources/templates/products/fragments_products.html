@@ -1,4 +1,4 @@
-<form th:object="${requestNewProduct}" th:action="${action}" method="POST" th:fragment="form(requestNewProduct, action, buttonLabel, href)">
+<form th:object="${requestNewProduct}" th:action="${action}" method="POST" th:fragment="formProduct(requestNewProduct, action, buttonLabel, href)">
     <div class="mb-3">
         <label for="name" class="form-label">Nome do Produto</label>
         <input type="text" th:errorclass="is-invalid" class="form-control" id="name" th:field="*{name}">
@@ -56,6 +56,36 @@
         <button type="submit" class="btn btn-primary" th:text="${buttonLabel}">Texto do botão</button>
         <a onclick="window.history.back()" class="btn btn-secondary">Voltar</a>
     </div>
+</form>
+
+<form th:object="${requestNewProvider}" th:action="${action}" method="POST" th:fragment="formProvider(requestNewProvider, action, buttonLabel, href)">
+    <div class="mb-3">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" class="form-control" th:errorclass="is-invalid" id="nome" th:field="*{name}">
+        <div class="invalid-feedback" th:errors="*{name}"></div>
+    </div>
+    <div class="mb-3">
+        <label for="endereco" class="form-label">Endereço</label>
+        <input type="text" th:errorclass="is-invalid"  class="form-control" id="endereco" th:field="*{address}">
+        <div class="invalid-feedback" th:errors="*{address}"></div>
+    </div>
+    <div class="mb-3">
+        <label for="cnpj" class="form-label">CNPJ</label>
+        <input type="text" th:errorclass="is-invalid"  class="form-control" id="cnpj" th:field="*{cnpj}">
+        <div class="invalid-feedback" th:errors="*{cnpj}"></div>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">E-mail</label>
+        <input type="email" class="form-control" th:errorclass="is-invalid" id="email" th:field="*{email}">
+        <div class="invalid-feedback" th:errors="*{email}"></div>
+    </div>
+    <div class="mb-3">
+        <label for="telefone" class="form-label">Telefone</label>
+        <input type="tel" class="form-control" th:errorclass="is-invalid" id="telefone" th:field="*{phone}">
+        <div class="invalid-feedback" th:errors="*{phone}"></div>
+    </div>
+    <button type="submit" class="btn btn-primary" th:text="${buttonLabel}">Texto do Botão</button>
+    <button type="button" class="btn btn-secondary" onclick="window.history.back()">Voltar</button>
 </form>
 
 <div th:fragment="alert" class="container-fluid" th:styleappend="${param.message != null ? '' : 'display: none;'}">
