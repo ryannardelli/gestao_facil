@@ -35,7 +35,28 @@
             <td>
                 <a th:href="@{/provider/{providerId}(providerId = ${providers.id})}" class="btn btn-success btn-sm"><i class="bi bi-eye"></i></a>
                 <a th:href="@{/provider/{providerId}/edit(providerId = ${providers.id})}" class="btn btn-warning btn-sm"><i class="bi bi-pencil"></i></a>
-                <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" th:data-bs-target="'#deleteModal' + ${providers.id}">
+                    <i class="bi bi-trash"></i>
+                </button>
+                <div class="modal fade" th:id="'deleteModal' + ${providers.id}" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header bg-danger text-white">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                                    <i class="bi bi-exclamation-triangle-fill"></i> Confirmar Exclusão
+                                </h1>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <p>Tem certeza que deseja excluir este item? Esta ação não pode ser desfeita.</p>
+                            </div>
+                            <div class="modal-footer d-flex justify-content-between">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <a th:href="@{/provider/{providerId}/delete(providerId=${providers.id})}" class="btn btn-danger">Excluir</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </td>
         </tr>
         </tbody>

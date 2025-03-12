@@ -8,6 +8,7 @@ import br.com.ryannardelli.registerProduct.repositories.ProviderRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -91,6 +92,22 @@ public class ProviderController {
                 return new ModelAndView("redirect:/provider");
             }
         }
+    }
+
+    @GetMapping("/{id}/delete")
+    public ModelAndView delete(@PathVariable long id) {
+        ModelAndView mv = new ModelAndView("redirect:/provider");
+        try {
+            this.providerRepository.deleteById(id);
+            mv.addObject("message", "Seu fornecedor foi excluído com sucesso!");
+            mv.addObject("success", true);
+        } catch (EmptyResultDataAccessException e) {
+            System.out.println(e);
+            mv.addObject("message", "Não foi possível apagar o fornecedor. Verifique e tente novamente.");
+            mv.addObject("success", false);
+        }
+
+        return mv;
     }
 
     @PostMapping("")
