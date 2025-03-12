@@ -18,7 +18,7 @@ public class RequestNewProduct {
     @NotBlank(message = "O campo categoria é obrigatório.")
     private String category;
     @NotNull(message = "O campo código é obrigatório.")
-    private Long cod;
+    private String cod;
     @NotNull(message = "O campo quantidade é obrigatório.")
     private Integer quantity;
     @NotNull(message = "Por favor, selecione uma categoria.")
@@ -42,11 +42,11 @@ public class RequestNewProduct {
         this.price = price;
     }
 
-    public Long getCod() {
+    public String getCod() {
         return cod;
     }
 
-    public void setCod(Long cod) {
+    public void setCod(String cod) {
         this.cod = cod;
     }
 

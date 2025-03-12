@@ -19,7 +19,7 @@ public class Product {
     private String category;
 
     private int quantity;
-    private long cod;
+    private String cod;
 
     @Enumerated(EnumType.STRING)
     private StatusProduct statusProduct;
@@ -29,7 +29,7 @@ public class Product {
     public Product() { }
 
     // constructor
-    public Product(String name, BigDecimal price, String category, int quantity, long cod, StatusProduct statusProduct) {
+    public Product(String name, BigDecimal price, String category, int quantity, String cod, StatusProduct statusProduct) {
         this.name = name;
         this.price = price;
         this.category = category;
@@ -77,11 +77,11 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public long getCod() {
+    public String getCod() {
         return cod;
     }
 
-    public void setCod(long cod) {
+    public void setCod(String cod) {
         this.cod = cod;
     }
 
