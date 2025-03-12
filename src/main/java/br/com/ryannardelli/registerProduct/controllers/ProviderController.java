@@ -1,6 +1,5 @@
 package br.com.ryannardelli.registerProduct.controllers;
 
-import br.com.ryannardelli.registerProduct.Models.Product;
 import br.com.ryannardelli.registerProduct.Models.Provider;
 import br.com.ryannardelli.registerProduct.Models.StatusProduct;
 import br.com.ryannardelli.registerProduct.dto.RequestNewProvider;

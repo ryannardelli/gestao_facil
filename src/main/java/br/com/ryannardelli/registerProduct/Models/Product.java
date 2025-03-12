@@ -24,11 +24,6 @@ public class Product {
     @Enumerated(EnumType.STRING)
     private StatusProduct statusProduct;
 
-    @ManyToOne
-    @JoinColumn(name = "provider_id", nullable = true)
-
-    private Provider provider;
-
 
     // constructor empty
     public Product() { }

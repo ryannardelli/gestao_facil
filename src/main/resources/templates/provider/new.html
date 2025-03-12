@@ -7,37 +7,6 @@
     <h2>Cadastro de Fornecedor</h2>
     <form th:replace="~{products/fragments_products :: formProvider(requestNewProduct, '/provider', 'Cadastrar', '/provider')}">
     </form>
-    <!--
-    <form th:action="@{/provider}" th:object="${requestNewProvider}" method="POST">
-        <div class="mb-3">
-            <label for="nome" class="form-label">Nome</label>
-            <input type="text" class="form-control" th:errorclass="is-invalid" id="nome" th:field="*{name}">
-            <div class="invalid-feedback" th:errors="*{name}"></div>
-        </div>
-        <div class="mb-3">
-            <label for="endereco" class="form-label">Endereço</label>
-            <input type="text" th:errorclass="is-invalid"  class="form-control" id="endereco" th:field="*{address}">
-            <div class="invalid-feedback" th:errors="*{address}"></div>
-        </div>
-        <div class="mb-3">
-            <label for="cnpj" class="form-label">CNPJ</label>
-            <input type="text" th:errorclass="is-invalid"  class="form-control" id="cnpj" th:field="*{cnpj}">
-            <div class="invalid-feedback" th:errors="*{cnpj}"></div>
-        </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">E-mail</label>
-            <input type="email" class="form-control" th:errorclass="is-invalid" id="email" th:field="*{email}">
-            <div class="invalid-feedback" th:errors="*{email}"></div>
-        </div>
-        <div class="mb-3">
-            <label for="telefone" class="form-label">Telefone</label>
-            <input type="tel" class="form-control" th:errorclass="is-invalid" id="telefone" th:field="*{phone}">
-            <div class="invalid-feedback" th:errors="*{phone}"></div>
-        </div>
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
-        <button type="button" class="btn btn-secondary" onclick="window.history.back()">Voltar</button>
-    </form>
-    -->
 </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

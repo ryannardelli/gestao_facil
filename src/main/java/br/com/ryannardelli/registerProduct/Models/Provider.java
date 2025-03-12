@@ -1,10 +1,8 @@
 package br.com.ryannardelli.registerProduct.Models;
 
-import java.util.List;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 
 @Entity
 public class Provider {
@@ -17,7 +15,6 @@ public class Provider {
     private String name;
 
     @NotBlank(message = "O CNPJ é obrigatório.")
-    @Size(min = 14, max = 18, message = "O CNPJ deve ter entre 14 e 18 caracteres.")
     @Column(nullable = false, unique = true)
     private String cnpj;
 
@@ -33,9 +30,6 @@ public class Provider {
     @NotBlank(message = "O endereço é obrigatório.")
     @Column(nullable = false)
     private String address;
-
-    @OneToMany(mappedBy = "provider", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Product> products;
 
     public Provider() {}
 
@@ -93,13 +87,5 @@ public class Provider {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
     }
 }
