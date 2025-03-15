@@ -27,12 +27,12 @@ Siga os passos abaixo para configurar o projeto em seu ambiente local:
 
 1. Clone o repositório do projeto:
     ```bash
-    git clone https://github.com/ryannardelli/gestao-facil.git
+    git clone https://github.com/ryannardelli/gestao_facil.git
     ```
 
 2. Navegue até o diretório do projeto:
     ```bash
-    cd gestao-facil
+    cd gestao_facil
     ```
 
 3. Compile o projeto usando o Maven:
@@ -74,4 +74,4 @@ Se você deseja contribuir para o projeto, siga os passos abaixo:
 
 ## Autor
 
-- **Ryan Nardelli** - [seu-usuario](https://github.com/seu-usuario)
+- **Ryan Nardelli** - [ryannardelli](https://github.com/ryannardelli)
